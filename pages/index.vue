@@ -14,6 +14,7 @@
 </template>
 <script>
 export default {
+  layout:"menus",
   data(){
     return{
       username: "",

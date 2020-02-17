@@ -1,29 +1,37 @@
 <template>
   <div>
-    <nav
-      class="navbar header has-shadow is-info"
-      role="navigation"
-      aria-label="main navigation"
-    >
-      <div class="navbar-brand">
-        <a
-          class="navbar-item"
-          
-        >
+   <b-navbar class="navbar header has-shadow is-info">
+        <template slot="brand">
+            <b-navbar-item tag="router-link" :to="{ path: '/' }">
+            
           <img
             src="~assets/images.jpeg"
-            alt="Buefy"
+            alt="admin"
             height="28"
           >
-        </a>
-
-        <div class="navbar-burger">
-          <span />
-          <span />
-          <span />
-        </div>
-      </div>
-    </nav>
+            </b-navbar-item>
+        </template>
+        <template slot="start">
+            <b-navbar-item >
+                Home
+            </b-navbar-item>
+            <b-navbar-item href="/list"> Lawyer list
+            </b-navbar-item>
+            <b-navbar-item href="/list1" >
+                Client
+            </b-navbar-item>
+            <b-navbar-item >
+                Case Details
+            </b-navbar-item>
+            <b-navbar-item >
+                Solution for Case
+            </b-navbar-item>
+            <b-navbar-item>
+                Logout
+            </b-navbar-item>
+            
+             </template>
+    </b-navbar>
 
     <section class="main-content columns">
       <aside class="column is-2 section">
