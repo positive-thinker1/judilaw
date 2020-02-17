@@ -4,6 +4,14 @@ export default {
   /*
   ** Headers of the page
   */
+  env: {
+    LARAVEL_URL_DEV: 'http://localhost/common-app/public/api/v1',
+    LARAVEL_URL_PRO: 'http://app.finpay.ml/api/v1',
+    LARAVEL_URL_LIVE: 'http://app.finpay.ml/api/v1',
+    PRODUCTION_TYPE: "pro", // if in local "dev" --OR-- if in production "pro" --OR-- if in Live "live"
+    COMPANY_NAME: "SystimaNX IT Solutions Private Limited"
+  },
+
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -28,13 +36,14 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~plugins/axios'
   ],
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    //'@nuxtjs/eslint-module'
+    // '@nuxtjs/eslint-module'
   ],
   /*
   ** Nuxt.js modules
@@ -43,7 +52,8 @@ export default {
     // Doc: https://buefy.github.io/#/documentation
     'nuxt-buefy',
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
   /*
   ** Axios module configuration
@@ -51,7 +61,7 @@ export default {
   */
   axios: {
   },
-  
+
   /*
   ** Build configuration
   */
@@ -59,9 +69,23 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
     }
-    
+  },
+  auth: {
+    redirect: {
+      login: '/'
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/users/login', method: 'post', propertyName: 'token' },
+          logout: false,//{ url: '/auth/logout', method: 'post' },
+          user: { url: '/users/profile', method: 'get', propertyName: 'data' }
+        },
+
+      }
+    },
   }
-  
+
 }
