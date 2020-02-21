@@ -15,7 +15,7 @@ export default {
                 this.$auth
                     .loginWith("local", inputDatas)
                     .then(response => {
-                        this.$router.push("/admin");
+                        this.$router.push("/list");
                     })
                     .catch(error => {
                         // console.log("onError " + JSON.stringify(error.response));

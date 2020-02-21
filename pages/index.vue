@@ -44,11 +44,11 @@ export default {
       let context = this;
       context.ACTION_LOADING(true);
       try {
+        let formData = new FormData();
+        formData.append("email",context.username)
+        formData.append("password",context.password)
         var request = {
-          data: {
-            username: context.username,
-            password: context.password
-          }
+          data: formData
         };
         var result = await context.ACTION_USER_AUTH(request);
       } catch (error) {
